@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BookCart.Models.Book>
+
+@{
+    ViewData["Title"] = "Book List";
+}
+
+<h2>Book List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Discount Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Description</td>
+                <td>@book.Price</td>
+                <td>@book.PriceDiscount</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(book.Image))
+                    {
+                        <img src="~/images/@book.Image" alt="Book Image" width="100" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Create">Add New Book</a>
